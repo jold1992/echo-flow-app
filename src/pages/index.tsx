@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { api } from "~/utils/api";
 import Intro from "./components/Intro";
+import Principal from "./components/Principal";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -18,10 +19,8 @@ export default function Home() {
       </Head>
       <main className=" flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          {/* aqui se deben poner los componentes */}
+          {sessionData && <Principal session={sessionData} />}
           {!sessionData && <Intro />}
-
-          {/* hasta aquí el contenedor */}
         </div>
       </main>
     </>
